@@ -1,0 +1,178 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='Your description')
+    meta(name='keywords', content='Your keywords')
+    meta(name='author', content='Your name')
+    link(rel="icon" href="/user/images/logo.png" type="image/x-icon")
+    link(href='/user/css/bootstrap.css', rel='stylesheet')
+    link(href='/user/css/font-awesome.css', rel='stylesheet')
+    link(href='/user/css/animate.css', rel='stylesheet')
+    link(href='/user/css/select2.css', rel='stylesheet')
+    link(href='/user/css/smoothness/jquery-ui-1.10.0.custom.css', rel='stylesheet')
+    link(href='/user/css/style.css', rel='stylesheet')
+    link(href='/public/css/public.css', rel='stylesheet')
+    link(href='/public/css/sweet-alert.css', rel='stylesheet')
+    block css
+    
+    script(src='/user/js/jquery.js')
+    script(src='/user/js/jquery-ui.js')
+    script(src='/user/js/jquery-migrate-1.2.1.min.js')
+    script(src='/user/js/jquery.easing.1.3.js')
+    script(src='/user/js/superfish.js')
+    script(src='/user/js/select2.js')
+    script(src='/user/js/jquery.parallax-1.1.3.resize.js')
+    script(src='/user/js/SmoothScroll.js')
+    script(src='/user/js/jquery.appear.js')
+    script(src='/user/js/jquery.caroufredsel.js')
+    script(src='/user/js/jquery.touchSwipe.min.js')
+    script(src='/user/js/jquery.ui.totop.js')
+    script(src='/user/js/script.js')
+    script(src='/public/js/sweet-alert.min.js')
+  body.front
+    #main
+      mixin toptip
+        .top1_wrapper
+          .container
+            .top1.clearfix
+              .email1 这里是众乐旅行
+              .phone1 +917 3386831
+              .lang1
+                - if (name)
+                  .dropdown
+                    button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+                      | 欢迎您，#{name}
+                      span.caret
+                    ul.dropdown-menu(aria-labelledby='dropdownMenu1')
+                      li
+                        a.ge.userUpdatePassword(href='javascript:;') 修改密码
+                      - if (usertype == 'user')
+                      li
+                        a.ru(href='/myorder') 我的订单
+                      li
+                        a.ru(href='/logout') 退出
+                - else
+                  .dropdown
+                    button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+                      | 游客用户，请您
+                      span.caret
+                    ul.dropdown-menu(aria-labelledby='dropdownMenu1')
+                      li
+                        a.ge(href='/login') 登录
+                      li
+                        a.ru(href='/reg') 注册
+      mixin topnav
+        .top2_wrapper
+          .container
+            .top2.clearfix
+              header
+                .logo_wrapper
+                  a.logo(href='/')
+                    img.img-responsive(src='/user/images/logo.png', alt='')
+              .navbar.navbar_.navbar-default
+                button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                .navbar-collapse.navbar-collapse_.collapse
+                  ul.nav.navbar-nav.sf-menu.clearfix
+                    li
+                      a(href='/') 众乐首页
+      mixin topslider
+        #slider_wrapper
+          .container
+            #slider_inner
+              div
+                #slider
+                  div
+                    .carousel-box
+                      .inner
+                        .carousel.main
+                          ul
+                            li
+                              .slider
+                                .slider_inner
+                                  .txt1
+                                    span 欢迎访问众乐
+                                  .txt2
+                                    span 旅行
+                                  .txt3
+                                    span 你未到过的地方，我带你去；你曾去过的地方，有回忆等着你。
+                            li
+                              .slider
+                                .slider_inner
+                                  .txt1
+                                    span 众乐
+                                  .txt2
+                                    span 旅行
+                                  .txt3
+                                    span 你、我都没留下脚印的地方，何不一起书写故事。
+                            li
+                              .slider
+                                .slider_inner
+                                  .txt1
+                                    span 众乐
+                                  .txt2
+                                    span 旅行
+                                  .txt3
+                                    span 若想走别逗留愈是被挽留愈沉重不如一起走。
+                  .slider_pagination
+      mixin searchtab(margintop)
+        #front_tabs(style='margin-top: #{margintop}')
+          .container
+            .tabs_wrapper.tabs1_wrapper
+              .tabs.tabs1
+                .tabs_tabs.tabs1_tabs
+                  ul
+                    li.active.flights
+                      a(href='#tabs-1') 目的地查询
+                    li.hotels
+                      a(href='#tabs-2') 景点分类查询
+                .tabs_content.tabs1_content
+                  #tabs-1
+                    form.form1(action='/placelist', method='post')
+                      .row
+                        .col-sm-8.col-md-4
+                          .select1_wrapper
+                            label 请输入目的地：
+                            .select1_inner
+                              input.toplaceinput(type='text', name='place')
+                        .col-sm-4.col-md-2
+                          .button1_wrapper
+                            input.btn-default.btn-form1-submit(type='submit', value='查询')
+                  #tabs-2
+                    form.form1(action='/fllist', method='post')
+                      .row
+                        .col-sm-8.col-md-4
+                          .select1_wrapper
+                            label 分类：
+                            .select1_inner
+                              select.select2.select(style='width: 100%;', name='fenlei')
+                                each fenleiitem in fenleiList
+                                  option(value= fenleiitem.id)= fenleiitem.name
+                        .col-sm-4.col-md-2
+                          .button1_wrapper
+                            button.btn-default.btn-form1-submit(type='submit') 查询
+      // 导航
+      block nav
+      //内容
+      block content
+      
+    mixin mixfooter
+      .bot2_wrapper
+        .container
+          .left_side
+            | 众乐旅行 © 2018.1.24
+          .right_side
+    // 页脚
+    block footer
+    script(src='/user/js/bootstrap.min.js')
+    script(src='/public/layer/layer.js')
+    script(src='/public/js/public.js')
+    script(src='/travel/js/user/pub.js')
+    block js

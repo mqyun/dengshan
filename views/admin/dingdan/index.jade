@@ -1,0 +1,57 @@
+extends ../layout
+
+block nav
+  +topnav
+  +leftnav
+
+block content
+  section#main-content
+    section.wrapper
+      .row
+        .col-lg-12
+          section.panel
+            header.panel-heading #{state==0?'未处理订单':'已处理订单'}
+            - if (pagenum.page != 0)
+              .panel-body
+                table.table.table-striped.table-advance.table-hover
+                  thead
+                    tr
+                      th.hidden-phone 订单产品
+                      th.hidden-phone 订单行程
+                      th 订单人数
+                      th 订单总价
+                      th 下单时间
+                      th
+                  tbody.info-tbody
+
+              .panel-body
+                .row
+                  .col-sm-6
+                  .col-sm-6
+                    .dataTables_paginate.paging_bootstrap.pagination
+                      ul
+                        - for (var i = 0; i < pagenum.page; i++)
+                          li.pageli(class= i==0?'active':'', data-pagenum= i+1, class= state==0?'wcldingdan-pageli':'ycldingdan-pageli')
+                            a(href='javascript:;')= i+1
+            - else
+              .panel-body
+                .no-datacon
+                  .no-data
+                    img(src='/public/img/no-data.png')
+block js
+  - if (state == 0)
+    script.
+      $(function() {
+        $('.leftli-wcldingdan').addClass('active');
+        getPageInfo('/admin/pageDingDanInfo', {
+          state: '0'
+        });
+      });
+  - else
+    script.
+      $(function() {
+        $('.leftli-ycldingdan').addClass('active');
+        getPageInfo('/admin/pageDingDanInfo', {
+          state: '1'
+        });
+      });

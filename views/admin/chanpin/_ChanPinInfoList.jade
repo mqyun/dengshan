@@ -1,0 +1,17 @@
+each chanpinitem in chanpinList
+  tr(data-chanpinid= chanpinitem.id)
+    td.td-placename #{chanpinitem.place}
+    td #{chanpinitem.fenleiname}
+    td #{chanpinitem.price}
+    td #{chanpinitem.hasimg==0?'未上传 ':'已上传 '}
+      - if (chanpinitem.hasimg == 0)
+        button.btn.btn-danger.btn-xs.btn-forgetUploadImg
+          i.icon-pencil 立即上传
+      - else
+        button.btn.btn-success.btn-xs.btn-seethisimg 查看图片
+    td
+      button.btn.btn-primary.btn-xs.btn-editchanpininfo
+        i.icon-pencil 修改信息
+      button.btn.btn-success.btn-xs.btn-addxingchengmodal
+        i.icon-ok 为该产品发布新行程
+      button.btn.btn-info.btn-xs.btn-getxingcheng 查看行程

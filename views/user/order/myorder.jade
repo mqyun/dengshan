@@ -1,0 +1,67 @@
+extends ../layout
+
+block nav
+  +toptip
+  +topnav
+
+block content
+  #parallax2.parallax
+    .bg2.parallax-bg.bg-fixed(style='background-position: 50% 81px;')
+    .overlay
+    .parallax-content
+      .container
+  #team1
+    .container
+      h2 我的
+        span(style='color: #1cbbb4;') 订单
+      .title1.animated
+        button.btn.btn-info.btn-order.btn-ycldingdan 已处理订单
+        button.btn.btn-order.btn-wcldingdan 未处理订单
+      br
+      .yclList
+        - if (ycldingdanList.length > 0)
+          each ycldingdanitem in ycldingdanList
+            .col-sm-3
+              .thumb3.animated(data-animation='flipInY', data-animation-delay='300')
+                .thumbnail.clearfix
+                  a(href='/detail/' + ycldingdanitem.chanpinid)
+                    figure
+                      img.img-responsive(src= ycldingdanitem.url, alt='')
+                      .over #{ycldingdanitem.place}
+                  .caption
+                    .txt1 #{ycldingdanitem.place}
+                    .txt2
+                      p 出发时间：#{ycldingdanitem.starttime}
+                      p 订单人数：#{ycldingdanitem.ddrenshu}人
+                      p 订单总价：￥#{ycldingdanitem.allprice}
+                      p 订单状态：#{ycldingdanitem.state==0?'未处理':'已处理'}
+                      p 订单时间：#{ycldingdanitem.time}
+        - else
+          .no-datacon
+            .no-data
+              img(src='/public/img/no-data.png')
+      .wclList(style='display: none;')
+        - if (wcldingdanList.length > 0)
+          each wcldingdanitem in wcldingdanList
+            .col-sm-3
+              .thumb3.animated(data-animation='flipInY', data-animation-delay='300')
+                .thumbnail.clearfix
+                  a(href='/detail/' + wcldingdanitem.chanpinid)
+                    figure
+                      img.img-responsive(src= wcldingdanitem.url, alt='')
+                      .over #{wcldingdanitem.place}
+                  .caption
+                    .txt1 #{wcldingdanitem.place}
+                    .txt2
+                      p 出发时间：#{wcldingdanitem.starttime}
+                      p 订单人数：#{wcldingdanitem.ddrenshu}人
+                      p 订单总价：￥#{wcldingdanitem.allprice}
+                      p 订单状态：#{wcldingdanitem.state==0?'未处理':'已处理'}
+                      p 订单时间：#{wcldingdanitem.time}
+        - else
+          .no-datacon
+            .no-data
+              img(src='/public/img/no-data.png')
+
+block footer
+  +mixfooter

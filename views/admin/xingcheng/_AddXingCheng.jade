@@ -1,0 +1,13 @@
+.panel-body
+  form.form-horizontal.tasi-form
+    .form-group
+      label.col-sm-1.control-label 人数
+      .col-sm-11
+        input.form-control(type='number', placeholder='人数(人)', name='renshu')
+    .form-group
+      label.col-sm-1.control-label 时间
+      .col-sm-11
+        #datetimepicker-xingchengstart.input-group.date
+          input.form-control(type='text', name='starttime')
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar

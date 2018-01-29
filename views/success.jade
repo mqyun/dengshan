@@ -1,0 +1,15 @@
+extends ./admin/layout
+
+block nav
+
+block content
+  .container-fluid
+    .panel-body
+      .no-datacon
+        .no-data
+          img(src='/public/img/success-icon.jpg')
+block js
+  script.
+    $(function() {
+      showTips('success', '\n', '上传成功');
+    });

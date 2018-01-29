@@ -1,0 +1,63 @@
+extends ../layout
+
+block nav
+	+toptip
+	+searchtab('20px')
+
+block content
+	.breadcrumbs1_wrapper
+		.container
+			.breadcrumbs1
+				a(href="/") 首页
+				span /
+				| #{smalltip}
+	#content
+		.container
+			.tabs_wrapper.tabs1_wrapper
+				.tabs.tabs2.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+					.tabs_content.tabs1_content
+						#tabs-2
+							.row
+								.col-sm-3
+									ul.ul3.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all(role="tablist")
+										li 公告           
+									.sm_slider.sm_slider2
+										a.sm_slider_prev(href="#")
+										a.sm_slider_next(href="#")
+										div
+											.carousel-box
+												.inner
+													.carousel.main
+														ul
+															li
+																.sm_slider_inner
+																	.txt1 抛开尘世的纷扰，远离城市的喧嚣，寻找一份宁静，奢侈地享受旅不问人，行随己意的潇洒。                                 
+																	.txt2 众乐旅行
+															|                               
+															li
+																.sm_slider_inner
+																	.txt1 背上简单的行囊，踏上行程，走过一个又一个陌生的城市。去感受旖旎的自然风光，绚丽的民族风情，悠久的历史文化。                              
+																	.txt2 众乐旅行
+
+								.col-sm-9
+									- if (chanpinList.length > 0)
+										each chanpinitem in chanpinList
+											.col-sm-4
+												.thumb5
+													.thumbnail.clearfix
+														figure
+															img.img-responsive(src= chanpinitem.url, alt="")
+															|                             
+															.over
+																.v1 #{chanpinitem.place}
+														.caption
+															.txt1 #{chanpinitem.place}
+															.txt3.clearfix
+																.left_side
+																	.price ￥#{chanpinitem.price}/人
+																.right_side
+																	a.btn-default.btn1(href="/detail/" + chanpinitem.id) 查看详情
+									- else
+										.no-datacon
+											.no-data
+												img(src='/public/img/no-data.png')

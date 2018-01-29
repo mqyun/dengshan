@@ -1,0 +1,25 @@
+.col-lg-12
+  section.panel
+    header.panel-heading #{xingchengname}
+    - if (xingchengList.length > 0)
+      .panel-body
+        table.table.table-striped.table-advance.table-hover
+          thead
+            tr
+              th.hidden-phone 人数
+              th.hidden-phone 已定人数
+              th 剩余人数
+              th 出发时间
+          tbody
+            each xingchengitem in xingchengList
+              tr(data-xingchengid= xingchengitem.id)
+                td #{xingchengitem.renshu}
+                td #{xingchengitem.ydrenshu}
+                td #{xingchengitem.renshu - xingchengitem.ydrenshu}
+                td #{xingchengitem.starttime}
+
+    - else
+      .panel-body
+        .no-datacon
+          .no-data
+            img(src='/public/img/no-data.png')

@@ -1,0 +1,23 @@
+.panel-body.panel-addChanPinInfo
+  form.form-horizontal.tasi-form
+    .form-group
+      label.col-sm-1.control-label 地点
+      .col-sm-11
+        input.form-control(type='text', placeholder='地点', name='edit-place', value= chanpinInfo.place)
+    .form-group
+      label.col-sm-1.control-label 介绍
+      .col-sm-11
+        input.form-control(type='text', placeholder='介绍', name='edit-introduce', value= chanpinInfo.introduce)
+    .form-group
+      label.col-sm-1.control-label 分类
+      .col-sm-11
+        select.form-control(name='edit-fenlei')
+          each fenleiitem in fenleiList
+            - if (chanpinInfo.fenlei == fenleiitem.id)
+              option(value= fenleiitem.id, selected)= fenleiitem.name
+            - else
+              option(value= fenleiitem.id)= fenleiitem.name
+    .form-group
+      label.col-sm-1.control-label 价格
+      .col-sm-11
+        input.form-control(type='text', placeholder='价格(元)/人', name='edit-price', value= chanpinInfo.price)

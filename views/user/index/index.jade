@@ -1,0 +1,109 @@
+extends ../layout
+
+block nav
+  +toptip
+  +topnav
+  +topslider
+  +searchtab
+  
+block content
+  #why1
+    .container
+      h2.animated 众乐旅行
+      .title1.animated
+        | 抛开尘世的纷扰，远离城市的喧嚣，寻找一份宁静，奢侈地享受旅不问人，行随己意的潇洒。背上简单的行囊，踏上行程，走过一个又一个陌生的城市。去感受旖旎的自然风光，绚丽的民族风情，悠久的历史文化。
+      br
+      br
+      .row
+        .col-sm-3
+          .thumb2.animated(data-animation='flipInY', data-animation-delay='200')
+            .thumbnail.clearfix
+              a(href='#')
+                figure
+                  img.img1.img-responsive(src='/user/images/why1.png', alt='')
+                  img.img2.img-responsive(src='/user/images/why1_hover.png', alt='')
+                .caption
+                  .txt1 有趣的旅行
+        .col-sm-3
+          .thumb2.animated(data-animation='flipInY', data-animation-delay='300')
+            .thumbnail.clearfix
+              a(href='#')
+                figure
+                  img.img1.img-responsive(src='/user/images/why2.png', alt='')
+                  img.img2.img-responsive(src='/user/images/why2_hover.png', alt='')
+                .caption
+                  .txt1 温馨的众乐
+        .col-sm-3
+          .thumb2.animated(data-animation='flipInY', data-animation-delay='400')
+            .thumbnail.clearfix
+              a(href='#')
+                figure
+                  img.img1.img-responsive(src='/user/images/why3.png', alt='')
+                  img.img2.img-responsive(src='/user/images/why3_hover.png', alt='')
+                .caption
+                  .txt1 出色的行程
+        .col-sm-3
+          .thumb2.animated(data-animation='flipInY', data-animation-delay='500')
+            .thumbnail.clearfix
+              a(href='#')
+                figure
+                  img.img1.img-responsive(src='/user/images/why4.png', alt='')
+                  img.img2.img-responsive(src='/user/images/why4_hover.png', alt='')
+                .caption
+                  .txt1 动人的风情
+  #parallax1.parallax
+    .bg2.parallax-bg
+    .overlay
+    .parallax-content
+      .container
+        .row
+          .col-sm-10.animated
+            .txt1(style='color: #00a99d;') 最新景点
+            .txt2(style='color: #00a99d;') #{chanpinList[0].introduce.substring(0, 150)}
+              - if (chanpinList[0].introduce.length > 150)
+                | ......
+            .txt3(style='color: #00a99d;') #{chanpinList[0].place}
+              strong #{chanpinList[0].price}
+              span /人
+          .col-sm-2.animated
+            a.btn-default.btn0(href='/detail/' + chanpinList[0].id) 查看详情
+  #popular_cruises1
+    .container
+      h2.animated 景点推荐
+      .title1.animated 这里有最新发布的景点，在这里你或许可以发现你最想要去的地方。
+      br
+      br
+      #popular_wrapper.animated(data-animation='fadeIn', data-animation-delay='300')
+        #popular_inner
+          div
+            #popular
+              div
+                .carousel-box
+                  .inner
+                    .carousel.main
+                      ul
+                        each chanpinitem in chanpinList
+                          li
+                            .popular
+                              .popular_inner
+                                figure
+                                  img.img-responsive(src= chanpinitem.url, alt='')
+                                  .over
+                                    .v1 #{chanpinitem.place}
+                                      each fenleiitem in fenleiList
+                                        - if (chanpinitem.fenlei == fenleiitem.id)
+                                          span #{fenleiitem.name}
+                                .caption
+                                  .txt1
+                                    span #{chanpinitem.place}
+                                    |  ￥#{chanpinitem.price}/人
+                                  .txt2 #{chanpinitem.introduce.substring(0, 70)}
+                                    - if (chanpinList[0].introduce.length > 70)
+                                      | ......
+                                  .txt3.clearfix
+                                    .right_side
+                                      a.btn-default.btn1(href='/detail/' + chanpinitem.id) 查看详情
+              .popular_pagination
+
+block footer
+  +mixfooter

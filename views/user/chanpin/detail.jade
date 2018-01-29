@@ -1,0 +1,68 @@
+extends ../layout
+
+block nav
+	+toptip
+
+block content
+	#what1
+		.container
+			h2.animated #{chanpinInfo.place}
+			br
+			.row
+				.col-sm-6.animated
+					ul.ul2
+						li
+							a(href='javascript:;') 地点：#{chanpinInfo.place}
+						li
+							a(href='javascript:;') 所属分类：#{chanpinInfo.fenleiname}
+						li.item-price(data-price= chanpinInfo.price)
+							a(href='javascript:;') 价格：￥#{chanpinInfo.price} /人
+				.col-sm-6.animated
+					blockquote.blockquote0 #{chanpinInfo.introduce}
+	#company1(style='margin-bottom: 60px;')
+		.container
+			h2.animated
+				| 关于
+				span(style='color: #1cbbb4;') #{chanpinInfo.place}
+				| 的行程
+			.title1.animated
+				| 现在还有 
+				span(style='color: #1cbbb4; font-weight: 700; font-size: 24px;') #{xingchengList.length} 
+				| 个行程未出发
+			br
+			.row
+				.col-sm-12.col-md-6.col-md-push-6
+					.content
+						.txt1.animated 行程列表(出发时间及余量)
+						- if (xingchengList.length > 0)
+							each xingchengitem in xingchengList
+								.distance1
+									.txt 出发时间：#{xingchengitem.starttime}
+									.bg(style='margin-top: 20px;')
+										.animated-distance(data-num= (xingchengitem.renshu - xingchengitem.ydrenshu) * 100 / xingchengitem.renshu)
+											span
+							- if (usertype == 'user')
+								.col-md-12
+									label 选择订单行程：
+									.select1_inner
+										select.select2.select(style='width: 100%;', name='xingchengid')
+											each xingchengitem in xingchengList
+												option(value= xingchengitem.id)= xingchengitem.starttime
+								.col-md-12(style='margin-top: 12px;')
+									label 选择订单人数：
+									.select1_inner
+										input.toplaceinput(type='number', name='ddrenshu', placeholder='订单人数')
+								.col-md-12(style='margin-top: 12px;')
+									button.btn.btn-info.pull-right.btn-addDingDan(data-chanpinid= chanpinInfo.id) 下单
+						- else
+							.no-datacon.smallno-datacon
+								.no-data.smallno-data
+									img(src='/public/img/no-data.png')
+				.col-sm-12.col-md-6.col-md-pull-6
+					img.img1.img-responsive.animated(src= imgList[0].url, alt='')
+	.container
+		h2.animated 旅行
+			span(style='color: #1cbbb4;') 图片
+		each imgitem in imgList
+			.col-md-6
+				img(style='width: 100%; margin-bottom: 20px;', src= imgitem.url, alt="")

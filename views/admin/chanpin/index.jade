@@ -1,0 +1,48 @@
+extends ../layout
+
+block nav
+  +topnav
+  +leftnav
+
+block content
+  section#main-content
+    section.wrapper
+      .row
+        .col-lg-12
+          section.panel
+            header.panel-heading
+              | 产品管理
+              .pull-right
+                button.btn.btn-info.btn-addChanPinView 添加产品
+            - if (pagenum.page != 0)
+              .panel-body
+                table.table.table-striped.table-advance.table-hover
+                  thead
+                    tr
+                      th.hidden-phone 旅游地点
+                      th.hidden-phone 所属分类
+                      th 价格(元/人)
+                      th 图片(未上传图片将无法展示)
+                  tbody.info-tbody
+
+              .panel-body
+                .row
+                  .col-sm-6
+                  .col-sm-6
+                    .dataTables_paginate.paging_bootstrap.pagination
+                      ul
+                        - for (var i = 0; i < pagenum.page; i++)
+                          li.pageli.chanpin-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                            a(href='javascript:;')= i+1
+            - else
+              .panel-body
+                .no-datacon
+                  .no-data
+                    img(src='/public/img/no-data.png')
+      .row#chanpinxingcheng
+block js
+  script.
+    $(function() {
+      $('.leftli-chanpin').addClass('active');
+      getPageInfo('/admin/pageChanPinInfo', {});
+    });

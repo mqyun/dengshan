@@ -1,0 +1,43 @@
+extends ../layout
+
+block nav
+
+block content
+  .container-fluid
+    .panel-body.panel-addChanPinInfo
+      form.form-horizontal.tasi-form
+        .form-group
+          label.col-sm-1.control-label 地点
+          .col-sm-11
+            input.form-control(type='text', placeholder='地点', name='place')
+        .form-group
+          label.col-sm-1.control-label 介绍
+          .col-sm-11
+            input.form-control(type='text', placeholder='介绍', name='introduce')
+        .form-group
+          label.col-sm-1.control-label 分类
+          .col-sm-11
+            select.form-control(name='fenlei')
+              each fenleiitem in fenleiList
+                option(value= fenleiitem.id)= fenleiitem.name
+        .form-group
+          label.col-sm-1.control-label 价格
+          .col-sm-11
+            input.form-control(type='text', placeholder='价格(元)/人', name='price')
+        .form-group
+          .col-lg-offset-2.col-lg-10
+            input.btn.btn-success.pull-right.btn-addchanpininfo(type='button', value='添加基本信息')
+    .panel-body.panel-uploadChanPinImg(style='display: none;')
+      form.form-horizontal.tasi-form(method='post', action='/admin/uploadImg', enctype='multipart/form-data')
+        .form-group
+          label.col-sm-3.control-label 上传图片(选择图片时按住Ctrl多选)
+          .col-sm-9
+            input.form-control(type='file', name='image', multiple='multiple')
+        .form-group
+          .col-lg-offset-2.col-lg-10
+            input.btn.btn-success.pull-right.btn-uploadImg(type='submit', value='上传图片')
+    .panel-body.panel-uploadSuccess(style='display: none;')
+      .no-datacon
+        .no-data
+          img(src='/public/img/success-icon.jpg')
+block js

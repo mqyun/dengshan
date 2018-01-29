@@ -1,0 +1,33 @@
+extends ../layout
+
+block nav
+  +topnav
+  +leftnav
+
+block content
+  section#main-content
+    section.wrapper
+      .row
+        .col-lg-12
+          section.panel
+            header.panel-heading #{state==0?'未处理订单':'已处理订单'}
+            .panel-body
+              table.table.table-striped.table-advance.table-hover
+                thead
+                  tr
+                    th.hidden-phone 用户账号
+                    th.hidden-phone 用户姓名
+                    th 用户联系方式
+                    th
+                tbody.info-tbody
+                  each useritem in userList
+                    tr
+                      td= useritem.account
+                      td= useritem.name
+                      td= useritem.phone
+
+block js
+  script.
+    $(function() {
+      $('.leftli-user').addClass('active');
+    });

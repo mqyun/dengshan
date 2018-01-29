@@ -1,0 +1,49 @@
+extends ../layout
+
+block nav
+	+topnav
+	+leftnav
+
+block content
+	section#main-content
+		section.wrapper
+			.row
+				.col-lg-12
+					section.panel
+						header.panel-heading
+							| 分类管理
+							.pull-right
+								button.btn.btn-info.btn-addfenleimodal 添加分类
+						.panel-body
+							table.table.table-striped.table-advance.table-hover
+								thead
+									tr
+										th
+											i.icon-bullhorn
+											| 分类名称
+										th
+										th
+											i.icon-bullhorn
+											| 分类名称
+										th
+								tbody
+									- for (var i = 0; i < fenleiList.length; i+=2)
+										tr
+											td= fenleiList[i].name
+											td
+												button.btn.btn-primary.btn-xs.btn-xgfenleiname(data-fenleiid= fenleiList[i].id)
+													i.icon-pencil 修改名称
+											- if (i+1 == fenleiList.length)
+												td
+												td
+											- else
+												td= fenleiList[i+1].name
+												td
+													button.btn.btn-primary.btn-xs.btn-xgfenleiname(data-fenleiid= fenleiList[i+1].id)
+														i.icon-pencil 修改名称
+
+block js
+	script.
+		$(function() {
+			$('.leftli-fenlei').addClass('active');
+		});
