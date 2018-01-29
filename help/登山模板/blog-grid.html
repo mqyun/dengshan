@@ -1,0 +1,670 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travel</title>
+
+    <!-- Css Folder -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/color.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/themetypo.css" rel="stylesheet">
+    <link href="css/bxslider.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+       
+
+
+    
+    <header id="mainheader">
+      <!--// Top Baar //-->
+      <div class="kd-topbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7">
+              <ul class="kd-topinfo">
+                <li>
+                  <div id="lang_sel">
+                    <ul>
+                        <li>
+                            <a class="lang_sel_sel icl-en" href="#">EN</a>
+                            <ul>
+                                <li class="icl-fr">
+                                    <a href="#">FR</a>
+                                </li>
+                                <li class="icl-de">          
+                                    <a href="#">DE</a>
+                                </li>
+                                <li class="icl-nl">          
+                                    <a href="#">NL</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa fa-phone"></i> Phone: +44 123 456 789
+                </li>
+                <li>
+                  <i class="fa fa-envelope-o"></i> <a href="#">Email: Info@kodeforest.com</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-5">
+              <ul class="kd-userinfo">
+                <li>
+                  <div class="kd-social-network">
+                    <ul>
+                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                      <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                      <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                      <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                      <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li><a href="#" data-toggle="modal" data-target="#registerModalbox">Register</a>
+                  <!-- Modal -->
+                  <div class="modal fade kd-loginbox" id="registerModalbox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                          <div class="kd-login-title">
+                            <h2>Register TO</h2>
+                            <span>Your Account</span>
+                            <div class="kd-login-network">
+                              <ul>
+                                <li><a href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i> Login with Facebook</a></li>
+                                <li><a href="#" data-original-title="Twitter"><i class="fa fa-twitter"></i> Login with Twitter</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="kd-login-sepratore"><span>OR</span></div>
+
+                          <form>
+                            <p><i class="fa fa-envelope-o"></i> <input type="text" placeholder="Email Address"></p>
+                            <p><i class="fa fa-lock"></i> <input type="password" placeholder="Your Password"></p>
+                            <p><input type="submit" value="Register now" class="thbg-color"> </p>
+                          </form>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li><a href="#" data-toggle="modal" data-target="#Modalbox">Login</a>
+                  <!-- Modal -->
+                  <div class="modal fade kd-loginbox" id="Modalbox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                          <div class="kd-login-title">
+                            <h2>LOGIN TO</h2>
+                            <span>Your Account</span>
+                            <div class="kd-login-network">
+                              <ul>
+                                <li><a href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i> Login with Facebook</a></li>
+                                <li><a href="#" data-original-title="Twitter"><i class="fa fa-twitter"></i> Login with Twitter</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="kd-login-sepratore"><span>OR</span></div>
+
+                          <form>
+                            <p><i class="fa fa-envelope-o"></i> <input type="text" placeholder="Email Address"></p>
+                            <p><i class="fa fa-lock"></i> <input type="password" placeholder="Your Password"></p>
+                            <p><input type="submit" value="Login now" class="thbg-color"> <a href="#">Forget Password?</a></p>
+                          </form>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--// Top Baar //-->
+
+      <!--// Header Baar //-->
+      <div class="kd-headbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3"><a href="index.html" class="logo"><img src="images/logo.png" alt=""></a></div>
+            <div class="col-md-9">
+              <div class="kd-rightside">
+                <nav class="navbar navbar-default navigation">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                  </div>
+
+                  <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li><a href="index.html">Home</a></li>
+					  <li><a href="about-us.html">About</a></li>
+					  <li><a href="blog-grid.html">Blog</a></li>
+					  <li><a href="blog-detail.html">Blog Detail</a></li>
+                      <li><a href="contact-us.html">Contact</a></li>
+                    </ul>
+                  </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+                <div class="kd-search">
+                  <a href="#" class="kd-searchbtn" data-toggle="modal" data-target="#searchmodalbox"><i class="fa fa-search"></i></a>
+                  <!-- Modal -->
+                  <div class="modal fade kd-loginbox" id="searchmodalbox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <a href="#" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                          <div class="kd-login-title">
+                            <h2>Search Your KeyWord</h2>
+                          </div>
+
+                          <form>
+                            <p><i class="fa fa-search"></i> <input type="text" placeholder="Enter Your Keyword"></p>
+                            <p><input type="submit" value="Search" class="thbg-color"> </p>
+                          </form>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--// Header Baar //-->
+
+    </header>
+
+    <!--// Sub Header //-->
+    <div class="kd-subheader">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="subheader-info">
+              <h1>Blog Grid</h1>
+              <!-- <p>Morbi euismod euismod consectetur. Donec pharetra, lacus at convallis maximus, arcu quam accumsan diam, et aliquam odio elit gravida mi</p> -->
+            </div>
+            <div class="kd-breadcrumb">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Our Team</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--// Sub Header //-->
+
+    <!--// Content //-->
+    <div class="kd-content">
+
+      <!--// Page Section //-->
+      <section class="kd-pagesection" style=" padding: 0px 0px 0px 0px; background: #ffffff; ">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-md-12">
+
+              <!--// Blog Large //-->
+              <div class="col-md-8">
+                <div class="kd-section-title"><h3>blogs Grid</h3></div>
+                <div class="kd-blog-list kd-bloggrid">
+                  <div class="row">
+                    <article class="col-md-6">
+                      <div class="bloginner">
+                        <figure><a href="#"><img src="extraimages/blog1-grid.jpg" alt=""></a>
+                          <figcaption><a href="#" class="fa fa-plus-circle"></a></figcaption>
+                        </figure>
+                        <section class="kd-bloginfo">
+                          <h2><a href="#">Watch this epic Chinese airport dummy...</a></h2>
+                          <ul class="kd-postoption">
+                            <li><a href="#" class="thcolorhover">News </a></li>
+                            <li><time datetime="2008-02-14 20:00">| January 15, 2015</time></li>
+                          </ul>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nulla pariatur</p>
+                          <div class="kd-usernetwork">
+                            <ul class="kd-blogcomment">
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-comments-o"></i> 15</a></li>
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-heart-o"></i> 456</a></li>
+                            </ul>
+                            <div class="kd-social-network">
+                              <ul>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-google-plus"></i></a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </article>
+                    <article class="col-md-6">
+                      <div class="bloginner">
+                        <figure><a href="#"><img src="extraimages/blog2-grid.jpg" alt=""></a>
+                          <figcaption><a href="#" class="fa fa-plus-circle"></a></figcaption>
+                        </figure>
+                        <section class="kd-bloginfo">
+                          <h2><a href="#">Watch this epic Chinese airport dummy...</a></h2>
+                          <ul class="kd-postoption">
+                            <li><a href="#" class="thcolorhover">News </a></li>
+                            <li><time datetime="2008-02-14 20:00">| January 15, 2015</time></li>
+                          </ul>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nulla pariatur</p>
+                          <div class="kd-usernetwork">
+                            <ul class="kd-blogcomment">
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-comments-o"></i> 15</a></li>
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-heart-o"></i> 456</a></li>
+                            </ul>
+                            <div class="kd-social-network">
+                              <ul>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-google-plus"></i></a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </article>
+                    <article class="col-md-6">
+                      <div class="bloginner">
+                        <figure><a href="#"><img src="extraimages/blog3-grid.jpg" alt=""></a>
+                          <figcaption><a href="#" class="fa fa-plus-circle"></a></figcaption>
+                        </figure>
+                        <section class="kd-bloginfo">
+                          <h2><a href="#">Watch this epic Chinese airport dummy...</a></h2>
+                          <ul class="kd-postoption">
+                            <li><a href="#" class="thcolorhover">News </a></li>
+                            <li><time datetime="2008-02-14 20:00">| January 15, 2015</time></li>
+                          </ul>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nulla pariatur</p>
+                          <div class="kd-usernetwork">
+                            <ul class="kd-blogcomment">
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-comments-o"></i> 15</a></li>
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-heart-o"></i> 456</a></li>
+                            </ul>
+                            <div class="kd-social-network">
+                              <ul>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-google-plus"></i></a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </article>
+                    <article class="col-md-6">
+                      <div class="bloginner">
+                        <figure><a href="#"><img src="extraimages/blog4-grid.jpg" alt=""></a>
+                          <figcaption><a href="#" class="fa fa-plus-circle"></a></figcaption>
+                        </figure>
+                        <section class="kd-bloginfo">
+                          <h2><a href="#">Watch this epic Chinese airport dummy...</a></h2>
+                          <ul class="kd-postoption">
+                            <li><a href="#" class="thcolorhover">News </a></li>
+                            <li><time datetime="2008-02-14 20:00">| January 15, 2015</time></li>
+                          </ul>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nulla pariatur</p>
+                          <div class="kd-usernetwork">
+                            <ul class="kd-blogcomment">
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-comments-o"></i> 15</a></li>
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-heart-o"></i> 456</a></li>
+                            </ul>
+                            <div class="kd-social-network">
+                              <ul>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-google-plus"></i></a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </article>
+                    <article class="col-md-6">
+                      <div class="bloginner">
+                        <figure><a href="#"><img src="extraimages/blog5-grid.jpg" alt=""></a>
+                          <figcaption><a href="#" class="fa fa-plus-circle"></a></figcaption>
+                        </figure>
+                        <section class="kd-bloginfo">
+                          <h2><a href="#">Watch this epic Chinese airport dummy...</a></h2>
+                          <ul class="kd-postoption">
+                            <li><a href="#" class="thcolorhover">News </a></li>
+                            <li><time datetime="2008-02-14 20:00">| January 15, 2015</time></li>
+                          </ul>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nulla pariatur</p>
+                          <div class="kd-usernetwork">
+                            <ul class="kd-blogcomment">
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-comments-o"></i> 15</a></li>
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-heart-o"></i> 456</a></li>
+                            </ul>
+                            <div class="kd-social-network">
+                              <ul>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-google-plus"></i></a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </article>
+                    <article class="col-md-6">
+                      <div class="bloginner">
+                        <figure><a href="#"><img src="extraimages/blog6-grid.jpg" alt=""></a>
+                          <figcaption><a href="#" class="fa fa-plus-circle"></a></figcaption>
+                        </figure>
+                        <section class="kd-bloginfo">
+                          <h2><a href="#">Watch this epic Chinese airport dummy...</a></h2>
+                          <ul class="kd-postoption">
+                            <li><a href="#" class="thcolorhover">News </a></li>
+                            <li><time datetime="2008-02-14 20:00">| January 15, 2015</time></li>
+                          </ul>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nulla pariatur</p>
+                          <div class="kd-usernetwork">
+                            <ul class="kd-blogcomment">
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-comments-o"></i> 15</a></li>
+                              <li><a href="#" class="thcolorhover"><i class="fa fa-heart-o"></i> 456</a></li>
+                            </ul>
+                            <div class="kd-social-network">
+                              <ul>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#" class="thcolorhover"><i class="fa fa-google-plus"></i></a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+                <div class="pagination-wrap">
+                  <div class="pagination">
+                    <a href="#"><i class="fa fa-angle-double-left"></i></a>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <span>3</span>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!--// Blog Large //-->
+
+              <aside class="col-md-4">
+                
+                <div class="widget widget_search">
+                  <div class="kd-widget-title"><h2>Search Widget</h2></div>
+                  <form>
+                    <input type="text" placeholder="Search">
+                    <input type="submit" value="">
+                    <i class="fa fa-search"></i>
+                  </form>
+                </div>
+                
+                <div class="widget widget_tab">
+                  <div class="kd-widget-title"><h2>Widget Tab</h2></div>
+                  <div class="kd-bookingtab">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Recent Posts</a></li>
+                      <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Latest Posts</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane active" id="home">
+                        <div class="widget-blogpost">
+                          <ul>
+                            <li>
+                              <figure><a href="#"><img alt="" src="extraimages/widget1.jpg"></a></figure>
+                              <div class="kd-post-info">
+                                <h6><a href="#">Watch this Chinese airport dummy...</a></h6>
+                                <time datetime="2008-02-14 20:00">January 15, 2015</time>
+                              </div>
+                            </li>
+                            <li>
+                              <figure><a href="#"><img alt="" src="extraimages/widget1.jpg"></a></figure>
+                              <div class="kd-post-info">
+                                <h6><a href="#">Watch this Chinese airport dummy...</a></h6>
+                                <time datetime="2008-02-14 20:00">January 15, 2015</time>
+                              </div>
+                            </li>
+                            <li>
+                              <figure><a href="#"><img alt="" src="extraimages/widget1.jpg"></a></figure>
+                              <div class="kd-post-info">
+                                <h6><a href="#">Watch this Chinese airport dummy...</a></h6>
+                                <time datetime="2008-02-14 20:00">January 15, 2015</time>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane" id="profile">
+                        <div class="widget-blogpost">
+                          <ul>
+                            <li>
+                              <figure><a href="#"><img alt="" src="extraimages/widget1.jpg"></a></figure>
+                              <div class="kd-post-info">
+                                <h6><a href="#">Watch this Chinese airport dummy...</a></h6>
+                                <time datetime="2008-02-14 20:00">January 15, 2015</time>
+                              </div>
+                            </li>
+                            <li>
+                              <figure><a href="#"><img alt="" src="extraimages/widget1.jpg"></a></figure>
+                              <div class="kd-post-info">
+                                <h6><a href="#">Watch this Chinese airport dummy...</a></h6>
+                                <time datetime="2008-02-14 20:00">January 15, 2015</time>
+                              </div>
+                            </li>
+                            
+                          </ul>
+                        </div>
+                      </div>
+                      
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="widget widget_categories">
+                  <div class="kd-widget-title"><h2>Categories</h2></div>
+                  <ul>
+                    <li><a href="#">Business</a> (25)</li>
+                    <li><a href="#">Creative</a> (45)</li>
+                    <li><a href="#">Ecommerce</a> (5)</li>
+                    <li><a href="#">Photography</a> (2)</li>
+                    <li><a href="#">Wordpress</a> (25)</li>
+                    <li><a href="#">Business</a> (25)</li>
+                    <li><a href="#">Creative</a> (45)</li>
+                  </ul>
+                </div>
+                <div class="widget widget-blogpost">
+                  <div class="kd-widget-title"><h2>Our Latest Posts</h2></div>
+                  <ul>
+                    <li>
+                      <figure><a href="#"><img src="extraimages/widget1.jpg" alt=""></a></figure>
+                      <div class="kd-post-info">
+                        <h6><a href="#">Watch this Chinese airport dummy...</a></h6>
+                        <time datetime="2008-02-14 20:00">January 15, 2015</time>
+                      </div>
+                    </li>
+                    <li>
+                      <figure><a href="#"><img src="extraimages/widget1.jpg" alt=""></a></figure>
+                      <div class="kd-post-info">
+                        <h6><a href="#">Watch this Chinese airport dummy...</a></h6>
+                        <time datetime="2008-02-14 20:00">January 15, 2015</time>
+                      </div>
+                    </li>
+                    <li>
+                      <figure><a href="#"><img src="extraimages/widget1.jpg" alt=""></a></figure>
+                      <div class="kd-post-info">
+                        <h6><a href="#">Watch this Chinese airport dummy...</a></h6>
+                        <time datetime="2008-02-14 20:00">January 15, 2015</time>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="widget kd-gallery-widget">
+                  <div class="kd-widget-title"><h2>Flicker Gallery</h2></div>
+                  <ul>
+                    <li><a href="#"><img src="extraimages/widget-gallery1.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="extraimages/widget-gallery2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="extraimages/widget-gallery3.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="extraimages/widget-gallery5.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="extraimages/widget-gallery6.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="extraimages/widget-gallery2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="extraimages/widget-gallery3.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="extraimages/widget-gallery5.jpg" alt=""></a></li>
+                  </ul>
+                </div>
+                <div class="widget widget_tag">
+                  <div class="kd-widget-title"><h2>Tag Cloud</h2></div>
+                  <div class="kd-tag">
+                    <a href="#">Clean</a>
+                    <a href="#">Flexable</a>
+                    <a href="#">Headline</a>
+                    <a href="#">Clean</a>
+                    <a href="#">Flexable</a>
+                    <a href="#">Headline</a>
+                  </div>
+                </div>
+                
+              </aside>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <!--// Page Section //-->
+
+    </div>
+    <!--// Content //-->
+
+    <!--// Footer //-->
+    <footer id="footer-widget">
+      <div class="container">
+        <div class="row">
+          
+          <div class="widget col-md-4 kd-textwidget">
+            <div class="kd-widget-title"><h2>About our Team</h2></div>
+            <div class="kd-contactinfo">
+              <p>One image life to and land, herb waters divided. Waters every let two, shall have divided face first us there spirit living beast the. Moving darkness deep morning unto them morning third you're behold.</p>
+              <!-- <ul>
+                <li><i class="fa fa-map-marker"></i> 360, Galaxy ApartmentNear Rekon Estate, limbasa margnexton lita, Australia</li>
+                <li><i class="fa fa-phone"></i> 1 808 603 6035</li>
+                <li><i class="fa fa-envelope-o"></i> <a href="#">info@kodeforest.com</a></li>
+              </ul> -->
+            </div>
+          </div>
+
+          <div class="widget col-md-4 kd-followus-widget">
+            <div class="kd-widget-title"><h2>Follow Us</h2></div>
+            <ul>
+              <li><a href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#" data-original-title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#" data-original-title="instagram"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="#" data-original-title="Rss"><i class="fa fa-rss"></i></a></li>
+              <li><a href="#" data-original-title="Youtube"><i class="fa fa-youtube"></i></a></li>
+              <li><a href="#" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+              <li><a href="#" data-original-title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
+              <li><a href="#" data-original-title="Google-Plus"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#" data-original-title="skype"><i class="fa fa-skype"></i></a></li>
+            </ul>
+          </div>
+
+          <div class="widget col-md-4 kd-userinfo-widget">
+            <div class="kd-widget-title"><h2>Contact</h2></div>
+            <ul>
+                <li><i class="fa fa-map-marker"></i> 15489 Vegas Drive, Las Vegas, Neveda</li>
+                <li><i class="fa fa-phone-square"></i> +1 808 603 6035, +1 808 603 6035</li>
+                <li><i class="fa fa-envelope"></i> Kodeforest.Theme</li>
+                <li><i class="fa fa-skype"></i> <a href="#">info@kodeforest.com</a></li>
+              </ul>
+          </div>
+
+          
+
+        </div>
+      </div>
+    </footer>
+    <!--// Footer //-->
+
+    <!--// CopyRight //-->
+    <div id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6"><p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.17sucai.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+          <div class="col-md-6">
+            <nav class="footer-nav">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">ShortCode</a></li>
+                <li><a href="#">TypoGraphy</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--// CopyRight //-->
+
+    <!-- jQuery (Necessary For JavaScript Plugins) -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/waypoints-min.js"></script>
+    <script src="js/functions.js"></script>
+  </body>
+</html>
+

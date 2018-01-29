@@ -2,7 +2,7 @@ var config = {
 	host: "localhost",
 	user: "root",
 	password: "",
-	database: "travel"
+	database: "dengshan"
 }
 
 module.exports = config;

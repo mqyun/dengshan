@@ -31,9 +31,9 @@ module.exports = {
       callback(err, rows);
     });
   },
-  // 获取最新的6个产品
+  // 获取最新的4个产品
   getNewChanPin: function(callback) {
-    var sql = "select chanpin.*, chanpinimg.url from chanpin right join chanpinimg on chanpin.id = chanpinimg.chanpinid group by chanpin.id order by chanpin.id desc limit 0, 7;";
+    var sql = "select chanpin.*, chanpinimg.url from chanpin right join chanpinimg on chanpin.id = chanpinimg.chanpinid group by chanpin.id order by chanpin.id desc limit 0, 4;";
     db.exec(sql, '', function(err, rows) {
       if (err) {
         callback(err);
