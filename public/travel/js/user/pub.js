@@ -20,9 +20,9 @@ $(document).on('click', '.btn-reg', function() {
   } else {
     ajaxPost('/userreg', data, function(result) {
       if (result.success) {
-        showTips('success', 'Success!', result.success + '，两秒钟之后返回登录页面！');
+        showTips('success', 'Success!', result.success + '，两秒钟之后返回当前页面！');
         setTimeout(function() {
-          location.href = '/login';
+          location.reload();
         }, 2000);
       }
     });
@@ -42,16 +42,16 @@ $(document).on('click', '.btn-login', function() {
   } else {
     ajaxPost('/userlogin', data, function(result) {
       if (result.success) {
-        showTips('success', 'Success!', result.success + '，两秒钟之后跳转到首页！');
+        showTips('success', 'Success!', result.success + '，两秒钟之后返回当前页面！');
         setTimeout(function() {
-          location.href = '/';
+          location.reload();
         }, 2000);
       }
     });
   }
 });
 
-// 下单addDingDan
+// 下单
 $(document).on('click', '.btn-addDingDan', function() {
   var chanpinid = $(this).data('chanpinid');
   var xingchengid = $('select[name="xingchengid"]').val();
@@ -66,18 +66,16 @@ $(document).on('click', '.btn-addDingDan', function() {
   if (ddrenshu.length == 0) {
     showTips('warning', 'Warning!', '请填写订单的人数！');
   } else {
-    showBtnTips('success', '确定下单吗？', '订单总价格为' + allprice + '元', '取消', '确定', function() {
+    showBtnTips('success', '确定预定该行程吗？', '预定总价格为' + allprice + '元', '取消', '立即付款', function() {
       ajaxPost('/addDingDan', data, function(result) {
         if (result.success) {
           showTips('success', 'Success!', result.success);
-          location.reload();
         }
       });
     });
   }
 });
 
-// 已处理订单
 $(document).on('click', '.btn-ycldingdan', function() {
   $('.btn-order').removeClass('btn-info');
   $(this).addClass('btn-info');
@@ -85,7 +83,6 @@ $(document).on('click', '.btn-ycldingdan', function() {
   $('.wclList').hide();
 });
 
-// 未处理订单
 $(document).on('click', '.btn-wcldingdan', function() {
   $('.btn-order').removeClass('btn-info');
   $(this).addClass('btn-info');
@@ -126,5 +123,20 @@ $(document).on('click', '.userUpdatePassword', function() {
       }
       layer.close(index);
     }
+  });
+});
+
+// 申请退款
+$(document).on('click', '.btn-shenqingtuikuan', function() {
+  var data = {
+    'dingdanid': $(this).data('dingdanid')
+  }
+  showBtnTips('success', '\n', '确定申请退款吗？', '取消', '确定', function() {
+    ajaxPost('/shenqingtuikuan', data, function(result) {
+      if (result.success) {
+        showTips('success', 'Success!', result.success);
+        location.reload();
+      }
+    });
   });
 });

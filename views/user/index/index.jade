@@ -11,7 +11,7 @@ block content
         .row
           .col-md-12
             .kd-modrentitle.thememargin
-              h3 最新推荐
+              h3 推荐
               .kd-divider
                 .short-seprator
                   span
@@ -30,7 +30,11 @@ block content
                       img.index-zuixinimg(src= chanpinitem.url, alt='')
                   .kd-serviceinfo
                     h2
-                      a(href='#') #{chanpinitem.place}
+                      a(href='#') #{chanpinitem.place}(
+                        each fenleiitem in fenleiList
+                          - if (chanpinitem.fenlei == fenleiitem.id)
+                            span #{fenleiitem.name}
+                      | )
                     p #{chanpinitem.introduce.substring(0, 50)}
                       - if (chanpinList[0].introduce.length > 50)
                         | ......
@@ -40,7 +44,7 @@ block content
         .row
           .col-md-12
             .kd-modrentitle.thememargin
-              h3 最热推荐
+              h3 随机推荐
               .kd-divider
                 .short-seprator
                   span
@@ -49,17 +53,17 @@ block content
               p  我们一路上兴致勃勃地参观，当夕阳西下时，才恋恋不舍地离开。
           .col-md-12
             .kd-package-list
-              each chanpinitem in chanpinList
-                article.col-md-4
+              each randchanpinitem in randchanpinList
+                article.col-md-6
                   figure
                     a(href='#')
-                      img.index-zuireimg(src= chanpinitem.url, alt='')
+                      img.index-randimg(src= randchanpinitem.url, alt='')
                     figcaption
-                      span.package-price.thbg-color ￥#{chanpinitem.price}/人
+                      span.package-price.thbg-color ￥#{randchanpinitem.price}/人
                       .kd-bottomelement
                         h5
-                          a(href='javascript:;') #{chanpinitem.place}
-                        a(href='/detail/' + chanpinitem.id)
+                          a(href='javascript:;') #{randchanpinitem.place}
+                        a(href='/detail/' + randchanpinitem.id)
                           .days-counter
                             span 查看
                             br

@@ -10,7 +10,13 @@ block content
       .row
         .col-lg-12
           section.panel
-            header.panel-heading #{state==0?'未处理订单':'已处理订单'}
+            header.panel-heading
+              - if (state == 0)
+                | 预订清单
+              - else if (state == 1)
+                | 申请退款清单
+              - else
+                | 退款完成清单
             - if (pagenum.page != 0)
               .panel-body
                 table.table.table-striped.table-advance.table-hover
@@ -31,8 +37,15 @@ block content
                     .dataTables_paginate.paging_bootstrap.pagination
                       ul
                         - for (var i = 0; i < pagenum.page; i++)
-                          li.pageli(class= i==0?'active':'', data-pagenum= i+1, class= state==0?'wcldingdan-pageli':'ycldingdan-pageli')
-                            a(href='javascript:;')= i+1
+                          - if (state == 0)
+                            li.pageli.wcldingdan-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                              a(href='javascript:;')= i+1
+                          - else if (state == 1)
+                            li.pageli.ycldingdan-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                              a(href='javascript:;')= i+1
+                          - else
+                            li.pageli.tkwcdingdan-pageli(class= i==0?'active':'', data-pagenum= i+1)
+                              a(href='javascript:;')= i+1
             - else
               .panel-body
                 .no-datacon
@@ -47,11 +60,19 @@ block js
           state: '0'
         });
       });
-  - else
+  - else if (state == 1)
     script.
       $(function() {
         $('.leftli-ycldingdan').addClass('active');
         getPageInfo('/admin/pageDingDanInfo', {
           state: '1'
+        });
+      });
+  - else
+    script.
+      $(function() {
+        $('.leftli-tkwcdingdan').addClass('active');
+        getPageInfo('/admin/pageDingDanInfo', {
+          state: '2'
         });
       });

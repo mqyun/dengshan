@@ -4,12 +4,12 @@ module.exports = {
   // 验证用户
   selectUser: function(account, callback) {
     var sql = "select * from user where account = ?;";
-		db.exec(sql, account, function(err, rows) {
-			if (err) {
-				callback(err);
-			}
-			callback(err, rows);
-		});
+    db.exec(sql, account, function(err, rows) {
+      if (err) {
+        callback(err);
+      }
+      callback(err, rows);
+    });
   },
   // 用户注册
   userReg: function(account, password, name, phone, callback) {
@@ -34,6 +34,16 @@ module.exports = {
   // 获取最新的4个产品
   getNewChanPin: function(callback) {
     var sql = "select chanpin.*, chanpinimg.url from chanpin right join chanpinimg on chanpin.id = chanpinimg.chanpinid group by chanpin.id order by chanpin.id desc limit 0, 4;";
+    db.exec(sql, '', function(err, rows) {
+      if (err) {
+        callback(err);
+      }
+      callback(err, rows);
+    });
+  },
+  // 随机推荐
+  getRandChanPin: function(callback) {
+    var sql = "select chanpin.*, chanpinimg.url from chanpin left join chanpinimg on chanpin.id = chanpinimg.chanpinid order by rand() LIMIT 2;";
     db.exec(sql, '', function(err, rows) {
       if (err) {
         callback(err);
@@ -113,8 +123,11 @@ module.exports = {
   },
   // 查看自己的订单
   selectMyDingDan: function(userid, state, callback) {
-    var sql = "select dingdan.*, chanpin.place, xingcheng.starttime, chanpinimg.url from ((dingdan left join chanpin on dingdan.chanpinid = chanpin.id) left join xingcheng on xingcheng.chanpinid = chanpin.id) left join chanpinimg on chanpinimg.chanpinid = dingdan.chanpinid where dingdan.userid = ? and dingdan.state = ? group by chanpin.id;";
-    db.exec(sql, [userid, state], function(err, rows) {
+    var sql = "select dingdan.*, chanpin.place, xingcheng.starttime, chanpinimg.url from ((dingdan left join chanpin on dingdan.chanpinid = chanpin.id) left join xingcheng on xingcheng.chanpinid = chanpin.id) left join chanpinimg on chanpinimg.chanpinid = dingdan.chanpinid where dingdan.userid = ? and dingdan.state = 0 group by dingdan.id;";
+    if (state != 0) {
+      sql = "select dingdan.*, chanpin.place, xingcheng.starttime, chanpinimg.url from ((dingdan left join chanpin on dingdan.chanpinid = chanpin.id) left join xingcheng on xingcheng.chanpinid = chanpin.id) left join chanpinimg on chanpinimg.chanpinid = dingdan.chanpinid where dingdan.userid = ? and dingdan.state != 0 group by dingdan.id;";
+    }
+    db.exec(sql, userid, function(err, rows) {
       if (err) {
         callback(err);
       }
@@ -125,16 +138,105 @@ module.exports = {
   getOldPassword: function(id, callback) {
     var sql = "select * from user where id = ?;";
     db.exec(sql, id, function(err, rows) {
-			if (err) {
-				callback(err);
-			}
-			callback(err, rows);
-		});
+      if (err) {
+        callback(err);
+      }
+      callback(err, rows);
+    });
   },
   // 修改密码
   updatePassword: function(password, id, callback) {
     var sql = "update user set password = ? where id = ?;";
     db.exec(sql, [password, id], function(err) {
+      if (err) {
+        callback(err);
+      }
+      callback(err);
+    });
+  },
+  // 申请退款
+  handleDingDan: function(id, callback) {
+    var sql = "update dingdan set state = 1 where id = ?;";
+    db.exec(sql, id, function(err) {
+      if (err) {
+        callback(err);
+      }
+      callback(err);
+    });
+  },
+  // 论坛查看所有帖子
+  getAllTieZi: function(usertype, callback) {
+    var sql;
+    if (usertype == 'user') {
+      sql = "select forum.*, user.name from forum left join user on forum.userid = user.id where forum.usertype = ?;";
+    } else {
+      sql = "select forum.*, admin.name from forum left join admin on forum.userid = admin.id where forum.usertype = ?;";
+    }
+    db.exec(sql, usertype, function(err, rows) {
+      if (err) {
+        callback(err);
+      }
+      callback(err, rows);
+    });
+  },
+  // 获取主题帖详情
+  getForumCon: function(forumid, callback) {
+    var sql = "SELECT * from (SELECT forum.*,\
+              case forum.usertype\
+              when 'user' THEN user.name\
+              when 'admin' THEN admin.name\
+              END as relname\
+              FROM forum\
+              LEFT JOIN user on user.id=forum.userid\
+              LEFT JOIN admin on admin.id=forum.userid) as a where id = ?;";
+    db.exec(sql, forumid, function(err, rows) {
+      if (err) {
+        callback(err);
+      }
+      callback(err, rows);
+    });
+  },
+  // 获取帖子详情更新浏览量
+  addforumViewTimes: function(forumid, callback) {
+    var sql = "update forum set viewingtimes=viewingtimes+1 where id = ?;";
+    db.exec(sql, forumid, function(err) {
+      if (err) {
+        callback(err);
+      }
+      callback(err);
+    });
+  },
+  // 获取帖子回复内容
+  getForumReplyCon: function(forumid, callback) {
+    var sql = "SELECT * from (SELECT forumreply.*,\
+              case forumreply.usertype\
+              when 'user' THEN user.name\
+              when 'admin' THEN admin.name\
+              END as relname\
+              FROM forumreply\
+              LEFT JOIN user on user.id=forumreply.userid\
+              LEFT JOIN admin on admin.id=forumreply.userid) as a where forumid = ?;";
+    db.exec(sql, forumid, function(err, rows) {
+      if (err) {
+        callback(err);
+      }
+      callback(err, rows);
+    });
+  },
+  // 发帖
+  addForumItem: function(theme, content, userid, usertype, callback) {
+    var sql = "insert into forum(theme, content, userid, usertype, date, viewingtimes) values(?,?,?,?,now(),0);";
+    db.exec(sql, [theme, content, userid, usertype], function(err) {
+      if (err) {
+        callback(err);
+      }
+      callback(err);
+    });
+  },
+  // 回复主题帖
+  addForumReply: function(forumid, userid, usertype, content, callback) {
+    var sql = "insert into forumreply(forumid, userid, usertype, content, date) values(?,?,?,?,now());";
+    db.exec(sql, [forumid, userid, usertype, content], function(err) {
       if (err) {
         callback(err);
       }

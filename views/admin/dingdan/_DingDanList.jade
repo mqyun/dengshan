@@ -8,6 +8,6 @@ each dingdanitem in dingdanList
     td
       button.btn.btn-primary.btn-xs.btn-getThisDingDanUserInfo(data-userid= dingdanitem.userid)
         i.icon-pencil 查看订单用户信息
-      - if (state == 0)
-        button.btn.btn-success.btn-xs.btn-clDingDan(data-dingdanid= dingdanitem.id)
-          i.icon-ok 处理订单
+      - if (state == 1)
+        button.btn.btn-success.btn-xs.btn-clDingDan(data-dingdanid= dingdanitem.id, data-xingchengid= dingdanitem.xingchengid, data-ddrenshu= dingdanitem.ddrenshu)
+          i.icon-ok 审核通过退款

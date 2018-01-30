@@ -152,14 +152,18 @@ ul {
 }
 
 .btn-primary {
-    background-color: #41cac0;
-    border-color: #41cac0;
+    /* background-color: #41cac0;
+    border-color: #41cac0; */
+    background-color: #1874CD;
+    border-color: #1874CD;
     color: #FFFFFF;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
-    background-color: #39b2a9;
-    border-color: #39b2a9;
+    /* background-color: #39b2a9;
+    border-color: #39b2a9; */
+    background-color: #087dc2;
+    border-color: #087dc2;
     color: #FFFFFF;
 }
 
@@ -370,5 +374,3 @@ ul {
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
     padding: 10px;
 }
-
-

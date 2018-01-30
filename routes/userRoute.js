@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var crypto = require('crypto');
-
 var usermodel = require('../models/usermodel');
 
 // 用户首页面
@@ -15,10 +13,16 @@ router.get('/', function(req, res, next) {
       if (err) {
         return next(err);
       }
-      res.render('user/index/index', {
-        title: '众乐首页',
-        fenleiList: fenleiList,
-        chanpinList: chanpinList
+      usermodel.getRandChanPin(function(err, randchanpinList) {
+        if (err) {
+          return next(err);
+        }
+        res.render('user/index/index', {
+          title: '登山俱乐部首页',
+          fenleiList: fenleiList,
+          chanpinList: chanpinList,
+          randchanpinList: randchanpinList
+        });
       });
     });
   });
@@ -40,11 +44,8 @@ router.get('/login', function(req, res, next) {
 
 // 用户注册
 router.post('/userreg', function(req, res, next) {
-  var hash = crypto.createHash('md5');
   var account = req.body.account;
-  var reqpassword = req.body.password;
-  hash.update(reqpassword);
-  var password = hash.digest('hex');
+  var password = req.body.password;
   var name = req.body.name;
   var phone = req.body.phone;
   usermodel.selectUser(account, function(err, rows) {
@@ -76,11 +77,8 @@ router.post('/userreg', function(req, res, next) {
 
 // 用户登录
 router.post('/userlogin', function(req, res, next) {
-  var hash = crypto.createHash('md5');
   var account = req.body.account;
-  var reqpassword = req.body.password;
-  hash.update(reqpassword);
-  var password = hash.digest('hex');
+  var password = req.body.password;
   usermodel.selectUser(account, function(err, rows) {
     if (err) {
       res.json({
@@ -191,7 +189,7 @@ router.get('/detail/:id', function(req, res, next) {
   });
 });
 
-// 下单
+// 预定
 router.post('/addDingDan', function(req, res, next) {
   var chanpinid = req.body.chanpinid;
   var xingchengid = req.body.xingchengid;
@@ -213,7 +211,7 @@ router.post('/addDingDan', function(req, res, next) {
         return next(err);
       }
       res.json({
-        'success': '下单成功'
+        'success': '预定成功'
       });
     });
   });
@@ -257,15 +255,9 @@ router.get('/myorder', function(req, res, next) {
 
 // 修改密码
 router.post('/updatePassword', function(req, res, next) {
-  var hash = crypto.createHash('md5');
-  var hash1 = crypto.createHash('md5');
   var userid = req.session.uid;
-  var reqpassword = req.body.password;
-  var reqoldPassword = req.body.oldpassword;
-  hash.update(reqpassword);
-  hash1.update(reqoldPassword);
-  var password = hash.digest('hex');
-  var oldpassword = hash1.digest('hex');
+  var password = req.body.password;
+  var oldpassword = req.body.oldpassword;
   usermodel.getOldPassword(userid, function(err, rows) {
     if (err) {
       res.json({
@@ -289,6 +281,128 @@ router.post('/updatePassword', function(req, res, next) {
       res.json({
         'success': '修改密码成功'
       });
+    });
+  });
+});
+
+// 申请退款
+router.post('/shenqingtuikuan', function(req, res, next) {
+  var dingdanid = req.body.dingdanid;
+  usermodel.handleDingDan(dingdanid, function(err) {
+    if (err) {
+      res.json({
+        'error': err
+      });
+      return next(err);
+    }
+    res.json({
+      'success': '已提交申请，等待管理员审核'
+    });
+  });
+});
+
+// 论坛首页
+router.get('/forum', function(req, res, next) {
+  res.render('user/forum/index', {
+    title: '论坛首页'
+  });
+});
+
+// 获取用户帖子
+router.post('/getForumCon', function(req, res, next) {
+  var usertype = req.body.usertype;
+  usermodel.getAllTieZi(usertype, function(err, forumList) {
+    if (err) {
+      res.json({
+        'error': err
+      });
+      return next();
+    }
+    for (var i = 0; i < forumList.length; i++) {
+      var sqltime = forumList[i].date;
+      var parsetime = new Date(sqltime);
+      forumList[i].date = parsetime.getFullYear() + '-' + (parsetime.getMonth() + 1) + '-' + parsetime.getDate() + ' ' + parsetime.getHours() + ':' + parsetime.getMinutes() + ':' + parsetime.getSeconds();
+    }
+    res.render('user/forum/_ForumList', {
+      forumList: forumList
+    }, function(err, html) {
+      res.json({
+        'success': true,
+        'view': html
+      })
+    });
+  });
+});
+
+// 发帖
+router.post('/addTieZi', function(req, res, next) {
+  var theme = req.body.theme;
+  var content = req.body.content;
+  var userid = req.session.uid;
+  var usertype = req.session.usertype;
+  usermodel.addForumItem(theme, content, userid, usertype, function(err, forumList) {
+    if (err) {
+      res.json({
+        'error': err
+      });
+      return next();
+    }
+    res.json({
+      'success': '发帖成功'
+    });
+  });
+});
+
+// 查看帖子详情
+router.get('/forumdetail/:id', function(req, res, next) {
+  var forumid = req.params.id;
+  usermodel.addforumViewTimes(forumid, function(err) {
+    if (err) {
+      return next(err);
+    }
+    usermodel.getForumCon(forumid, function(err, forumInfo) {
+      if (err) {
+        return next(err);
+      }
+      for (var i = 0; i < forumInfo.length; i++) {
+        var sqltime = forumInfo[i].date;
+        var parsetime = new Date(sqltime);
+        forumInfo[i].date = parsetime.getFullYear() + '-' + (parsetime.getMonth() + 1) + '-' + parsetime.getDate() + ' ' + parsetime.getHours() + ':' + parsetime.getMinutes() + ':' + parsetime.getSeconds();
+      }
+      usermodel.getForumReplyCon(forumid, function(err, replyList) {
+        if (err) {
+          return next(err);
+        }
+        for (var i = 0; i < replyList.length; i++) {
+          var sqltime = replyList[i].date;
+          var parsetime = new Date(sqltime);
+          replyList[i].date = parsetime.getFullYear() + '-' + (parsetime.getMonth() + 1) + '-' + parsetime.getDate() + ' ' + parsetime.getHours() + ':' + parsetime.getMinutes() + ':' + parsetime.getSeconds();
+        }
+        res.render('user/forum/forumdetail', {
+          title: '帖子详情',
+          forumInfo: forumInfo[0],
+          replyList: replyList
+        });
+      });
+    });
+  });
+});
+
+// 回复帖子
+router.post('/addReply', function(req, res, next) {
+  var forumid = req.body.forumid;
+  var userid = req.session.uid;
+  var usertype = req.session.usertype;
+  var content = req.body.content;
+  usermodel.addForumReply(forumid, userid, usertype, content, function(err, forumList) {
+    if (err) {
+      res.json({
+        'error': err
+      });
+      return next();
+    }
+    res.json({
+      'success': '回复成功'
     });
   });
 });

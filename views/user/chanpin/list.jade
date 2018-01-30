@@ -34,7 +34,7 @@ block content
                             a(href='javascript:;')
                               img.index-zuireimg(src= chanpinitem.url, alt='')
                             figcaption
-                              a.fa.fa-plus-circle(href="/detail/" + chanpinitem.id)
+                              a.fa.fa-eye(href="/detail/" + chanpinitem.id)
                           section.kd-bloginfo
                             h2
                               a(href='javascript:;') #{chanpinitem.place}
@@ -56,3 +56,6 @@ block content
                   input(type='text', name='place', placeholder='Search')
                   input(type='submit', value='')
                   i.fa.fa-search
+
+block footer
+  +mixfooter

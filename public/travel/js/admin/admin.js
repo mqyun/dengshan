@@ -284,10 +284,14 @@ $(document).on('click', '.btn-getThisDingDanUserInfo', function() {
 
 $(document).on('click', '.btn-clDingDan', function() {
   var dingdanid = $(this).data('dingdanid');
+  var xingchengid = $(this).data('xingchengid');
+  var ddrenshu = $(this).data('ddrenshu');
   var data = {
-    'dingdanid': dingdanid
+    'dingdanid': dingdanid,
+    'xingchengid': xingchengid,
+    'ddrenshu': ddrenshu
   }
-  showBtnTips('success', '\n', '确定处理订单吗？', '取消', '确定', function() {
+  showBtnTips('success', '\n', '确定退款吗？', '取消', '确定', function() {
     ajaxPost('/admin/handleDingDan', data, function(result) {
       if (result.success) {
         showTips('success', '\n', result.success);

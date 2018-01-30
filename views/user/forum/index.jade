@@ -1,0 +1,68 @@
+extends ../layout
+
+block nav
+  +topnav
+
+block content
+  .kd-subheader
+    .container
+      .row
+        .col-md-12
+          .subheader-info
+            h1 论坛
+          .kd-breadcrumb
+            ul
+              li
+                a(href='/') 首页
+              li
+                a(href='/forum') 论坛首页
+
+  .kd-content
+    section.kd-pagesection(style=' padding: 50px 0px 20px 0px; ')
+      .container
+        .row
+          .col-md-8
+            .kd-section-title
+              h3 所有帖子
+            .forum-tit(style='margin-bottom: 15px;')
+              button.btn.btn-primary.btn-forumtit.btn-forum-user(style='margin-left: 5px;') 用户帖
+              button.btn.btn-forumtit.btn-forum-admin(style='margin-left: 10px;') 管理员帖子
+              - if (name)
+                button.btn.btn-primary.btn-addTieZiView.pull-right 发帖
+            .kd-blog-list.kd-blogmedium
+              .row#forumListView
+                
+          .col-md-4
+            .kd-bookingtab
+              ul.nav.nav-tabs(role='tablist')
+                li.active
+                  a(href='#home', aria-controls='home', role='tab', data-toggle='tab')
+                    i.fa.fa-building
+              .tab-content
+                #home.tab-pane.active(role='tabpanel')
+                  .kd-booking-list
+                    h2 发帖方式
+                    ul
+                      - if (!name)
+                        li
+                          i.fa.fa-check-circle
+                          | 只有登陆后才有发帖权限！
+                      - else
+                        li
+                          i.fa.fa-check-circle
+                          | No.1 点击左侧发帖按钮
+                        li
+                          i.fa.fa-check-circle
+                          | No.2 输入帖子主题
+                        li
+                          i.fa.fa-check-circle
+                          | No.3 输入帖子内容
+                        li
+                          i.fa.fa-check-circle
+                          | No.4 发帖成功！！！
+
+block footer
+  +mixfooter
+
+block js
+  script(src='/travel/js/user/forum.js')

@@ -1,0 +1,87 @@
+extends ../layout
+
+block nav
+  +topnav
+
+block content
+  .kd-subheader
+    .container
+      .row
+        .col-md-12
+          .subheader-info
+            h1 帖子详情
+          .kd-breadcrumb
+            ul
+              li
+                a(href='/') 首页
+              li
+                a(href='/forum') 论坛首页
+              li
+                a(href='javascript:;') 帖子详情
+  .kd-content
+    section.kd-pagesection(style=' padding: 0px 0px 0px 0px; background: #ffffff; ')
+      .container
+        .row
+          .col-md-8
+            .kd-blog-detail
+              .inn-detail
+                .kd-detail-time.thbg-color
+                  span
+                  | 详情
+                .kd-rich-editor
+                  h3 #{forumInfo.theme}
+                  ul.kd-detailpost-option
+                    li
+                      | By: 
+                      a.thcolorhover(href='#') #{forumInfo.relname}
+                    li
+                      | 发帖时间: 
+                      a.thcolorhover(href='#') #{forumInfo.date}
+                  p #{forumInfo.content}
+              .kd-user-tag
+                .row
+                  .col-md-8
+                    .kd-tag
+                      span
+                        i.fa.fa-tag
+                        | 回复内容
+                  .col-md-4
+                    .kd-social-network
+                      ul
+                        - if (name)
+                          li.replyTieZiView(data-forumid= forumInfo.id)
+                            a(href='javascript:;', data-original-title='Twitter') 回复
+              #kdcomments
+                h2
+                  | 共有 
+                  span(style='color: #087dc2; font-weight: bold;') #{replyList.length} 
+                  | 条回复 
+                ul
+                  each replyitem in replyList
+                    li
+                      .thumblist
+                        ul
+                          li
+                            figure
+                              a(href='#')
+                                img(alt='', src='/user/extraimages/comment1.jpg')
+                            .text
+                              a(href='#') #{replyitem.relname}
+                              time
+                                i.fa.fa-calendar
+                                | #{replyitem.date}
+                              p #{replyitem.content}
+          aside.col-md-4
+            .widget.widget_tab
+              .kd-widget-title
+                h2 帖子详情查看
+              .kd-bookingtab
+                ul.nav.nav-tabs(role='tablist')
+                  li.active
+                    a(href='#home', aria-controls='home', role='tab', data-toggle='tab') #{name==''?'只有登陆后才能回复':'点击回复按钮回帖'}
+
+block footer
+  +mixfooter
+
+block js
+  script(src='/travel/js/user/forum.js')

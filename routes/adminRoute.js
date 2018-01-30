@@ -4,8 +4,6 @@ var router = express.Router();
 var multiparty = require('multiparty');
 var fs = require('fs');
 
-var crypto = require('crypto');
-
 var adminmodel = require('../models/adminmodel');
 
 // 管理员登录页面
@@ -17,11 +15,8 @@ router.get('/', function(req, res, next) {
 
 // 管理员登录
 router.post('/login', function(req, res, next) {
-  var hash = crypto.createHash('md5');
   var account = req.body.account;
-  var reqpassword = req.body.password;
-  hash.update(reqpassword);
-  var password = hash.digest('hex');
+  var password = req.body.password;
   adminmodel.selectAdmin(account, function(err, rows) {
     if (err) {
       res.json({
@@ -414,7 +409,7 @@ router.get('/dingDan/:state', function(req, res, next) {
       return next(err);
     }
     res.render('admin/dingdan/index', {
-      title: '订单管理',
+      title: '预定管理',
       pagenum: pagenum[0],
       state: state
     });
@@ -490,9 +485,11 @@ router.post('/getThisDingDanUserInfo', function(req, res, next) {
   });
 });
 
-// 处理订单
+// 处理退款
 router.post('/handleDingDan', function(req, res, next) {
   var dingdanid = req.body.dingdanid;
+  var xingchengid = req.body.xingchengid;
+  var ddrenshu = req.body.ddrenshu;
   adminmodel.handleDingDan(dingdanid, function(err) {
     if (err) {
       res.json({
@@ -500,8 +497,16 @@ router.post('/handleDingDan', function(req, res, next) {
       });
       return next(err);
     }
-    res.json({
-      'success': '订单处理成功'
+    adminmodel.updateTuiKuanXingCheng(ddrenshu, xingchengid, function(err) {
+      if (err) {
+        res.json({
+          'error': err
+        });
+        return next(err);
+      }
+      res.json({
+        'success': '退款成功'
+      });
     });
   });
 });
@@ -540,11 +545,8 @@ router.post('/addAdminModal', function(req, res, next) {
 
 // 添加管理员
 router.post('/addAdmin', function(req, res, next) {
-  var hash = crypto.createHash('md5');
   var account = req.body.account;
-  var reqpassword = req.body.password;
-  hash.update(reqpassword);
-  var password = hash.digest('hex');
+  var password = req.body.password;
   var name = req.body.name;
   var quanxian = req.body.quanxian;
   adminmodel.addAdmin(account, password, name, quanxian, function(err) {

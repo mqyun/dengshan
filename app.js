@@ -42,6 +42,20 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(function(req, res, next) {
+  if (req.session.usertype != 'admin') {
+    if (req.url == '/admin' || req.url == '/admin/login') {
+      next();
+    } else if (req.url.indexOf('/admin') != -1) {
+      res.redirect('/');
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
 // 用户
 app.use('/', userroute);
 // 管理员

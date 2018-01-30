@@ -37,13 +37,18 @@ html(lang='en')
                   - if (name)
                     li
                       a(href='javascript:;') 欢迎您，#{name}
-                    li.userUpdatePassword
-                      a(href='javascript:;') 修改密码
                     - if (usertype == 'user')
+                      li.userUpdatePassword
+                        a(href='javascript:;') 修改密码
                       li
-                        a(href='/myorder') 我的订单
+                        a(href='/myorder') 我的预定
                       li
                         a(href='/logout') 退出
+                    - if (usertype == 'admin')
+                      li
+                        a(href='/admin/chanpin') 返回后台管理
+                      li
+                        a(href='/admin/logout') 退出
                   - else
                     li
                       a(href='#', data-toggle='modal', data-target='#registerModalbox') 注册
@@ -115,9 +120,7 @@ html(lang='en')
                         li
                           a(href='/') 首页
                         li
-                          a(href='about-us.html') 所有项目
-                        li
-                          a(href='blog-grid.html') 论坛
+                          a(href='/forum') 论坛
     
     mixin topslider
       #mainbanner
@@ -127,15 +130,11 @@ html(lang='en')
             .kd-caption
               h2 寻找最好的登山项目
               h1 我们提供最好的服务
-              .linksection
-                a(href='#') 查看全部项目
           li
             img(src='/user/extraimages/banner4.jpg', alt='')
             .kd-caption
               h2 登山俱乐部
               h1 临着一切不平常的急难，只有勇敢和坚强才能拯救
-              .linksection
-                a(href='#') 查看全部项目
         .kd-tourform
           .container
             a.formbtn(href='#') 查询

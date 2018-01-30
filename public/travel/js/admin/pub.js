@@ -21,6 +21,10 @@ $(document).on('click', '.pageli', function() {
 		url = '/admin/pageDingDanInfo';
 		data.state = '1';
 	}
+	if ($(this).hasClass('tkwcdingdan-pageli')) {
+		url = '/admin/pageDingDanInfo';
+		data.state = '2';
+	}
 	getPageInfo(url, data);
 });
 

@@ -24,8 +24,8 @@ html(lang='en')
         .sidebar-toggle-box
           .icon-reorder.tooltips(data-original-title='Toggle Navigation', data-placement='right')
         a.logo(href='javascript:;')
-          | 众乐后台
-          span 管理
+          | 登山俱乐部
+          span(style='color: #1874CD; font-weight: bold;') 后台管理
         .top-nav
           ul.nav.pull-right.top-menu
             li.dropdown
@@ -43,29 +43,37 @@ html(lang='en')
           ul.sidebar-menu
             li.leftli-chanpin
               a(href='/admin/chanpin')
-                i.icon-dashboard
+                i.icon-book
                 span 产品管理
             li.leftli-fenlei
               a(href='/admin/fenlei')
-                i.icon-dashboard
-                span 分类管理
+                i.icon-book
+                span 登山类型管理
             li.leftli-wcldingdan
               a(href='/admin/dingDan/0')
-                i.icon-dashboard
-                span 未处理订单
+                i.icon-book
+                span 预订清单
             li.leftli-ycldingdan
               a(href='/admin/dingDan/1')
-                i.icon-dashboard
-                span 已处理订单
+                i.icon-book
+                span 申请退款清单
+            li.leftli-tkwcdingdan
+              a(href='/admin/dingDan/2')
+                i.icon-book
+                span 退款完成订单
             li.leftli-user
               a(href='/admin/userinfo')
-                i.icon-dashboard
+                i.icon-book
                 span 用户管理
             - if (quanxian == 1)
               li.leftli-admin
                 a(href='/admin/adminList')
-                  i.icon-dashboard
+                  i.icon-book
                   span 管理员管理
+            li.leftli-forum
+              a(href='/forum')
+                i.icon-book
+                span 前往论坛
     // 导航
     block nav
     // 内容

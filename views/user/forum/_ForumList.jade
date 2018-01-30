@@ -1,0 +1,22 @@
+each forumitem in forumList
+  .col-md-12
+    .bloginner
+      .kd-bloginfo
+        h2
+          a(href='#') #{forumitem.theme}
+        ul.kd-postoption
+          li
+            a.thcolorhover(href='#') #{forumitem.name}
+          li
+            time #{forumitem.date}
+        p #{forumitem.content}
+        .kd-usernetwork
+          ul.kd-blogcomment
+            li
+              a.thcolorhover(href='javascript:;')
+                i.fa.fa-eye
+                |  #{forumitem.viewingtimes}
+            li
+              a.thcolorhover(href='/forumdetail/' + forumitem.id)
+                i.fa.fa-eye
+                |  查看详情

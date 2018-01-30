@@ -173,8 +173,18 @@ module.exports = {
   },
   // 处理订单
   handleDingDan: function(id, callback) {
-    var sql = "update dingdan set state = 1 where id = ?;";
+    var sql = "update dingdan set state = 2 where id = ?;";
     db.exec(sql, id, function(err) {
+      if (err) {
+        callback(err);
+      }
+      callback(err);
+    });
+  },
+  // 处理退款后修改行程人数
+  updateTuiKuanXingCheng: function(ddrenshu, xingchengid, callback) {
+    var sql = "update xingcheng set ydrenshu = ydrenshu - ? where id = ?;";
+    db.exec(sql, [ddrenshu, xingchengid], function(err) {
       if (err) {
         callback(err);
       }

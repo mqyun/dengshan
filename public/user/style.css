@@ -508,6 +508,9 @@
 .index-zuireimg {
   height: 235px;
 }
+.index-randimg {
+  height: 310px;
+}
 .kd-services article {
 	margin: 0px -4px 24px 0px;
 }
@@ -968,6 +971,7 @@ blockquote {
 	padding-left: 275px;
 }
 .kd-blogmedium .bloginner {
+  width: 100%;
 	background-color: #fcfcfc;
 	float: left;
 	padding: 15px 20px 15px 15px;
