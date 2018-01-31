@@ -134,10 +134,10 @@ module.exports = {
       callback(err, rows);
     });
   },
-  // 获取原密码
-  getOldPassword: function(id, callback) {
-    var sql = "select * from user where id = ?;";
-    db.exec(sql, id, function(err, rows) {
+  // 获取手机号
+  getOldPassword: function(account, callback) {
+    var sql = "select * from user where account = ?;";
+    db.exec(sql, account, function(err, rows) {
       if (err) {
         callback(err);
       }
@@ -145,9 +145,9 @@ module.exports = {
     });
   },
   // 修改密码
-  updatePassword: function(password, id, callback) {
-    var sql = "update user set password = ? where id = ?;";
-    db.exec(sql, [password, id], function(err) {
+  updatePassword: function(password, account, callback) {
+    var sql = "update user set password = ? where account = ?;";
+    db.exec(sql, [password, account], function(err) {
       if (err) {
         callback(err);
       }

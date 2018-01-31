@@ -255,23 +255,23 @@ router.get('/myorder', function(req, res, next) {
 
 // 修改密码
 router.post('/updatePassword', function(req, res, next) {
-  var userid = req.session.uid;
+  var account = req.body.account;
+  var phone = req.body.phone;
   var password = req.body.password;
-  var oldpassword = req.body.oldpassword;
-  usermodel.getOldPassword(userid, function(err, rows) {
+  usermodel.getOldPassword(account, function(err, rows) {
     if (err) {
       res.json({
         'error': err
       });
       return next(err);
     }
-    if (oldpassword != rows[0].password) {
+    if (phone != rows[0].phone) {
       res.json({
-        'error': '请输入正确的原密码!'
+        'error': '请输入注册时的手机号!'
       });
       return next(err);
     }
-    usermodel.updatePassword(password, userid, function(err) {
+    usermodel.updatePassword(password, account, function(err) {
       if (err) {
         res.json({
           'error': err

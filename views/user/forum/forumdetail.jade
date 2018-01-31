@@ -54,7 +54,7 @@ block content
               #kdcomments
                 h2
                   | 共有 
-                  span(style='color: #087dc2; font-weight: bold;') #{replyList.length} 
+                  span(style='color: #087dc2; font-weight: bold;') #{replyList.length}
                   | 条回复 
                 ul
                   each replyitem in replyList
@@ -62,9 +62,9 @@ block content
                       .thumblist
                         ul
                           li
-                            figure
-                              a(href='#')
-                                img(alt='', src='/user/extraimages/comment1.jpg')
+                            //- figure
+                            //-   a(href='#')
+                            //-     img(alt='', src='/user/extraimages/comment1.jpg')
                             .text
                               a(href='#') #{replyitem.relname}
                               time

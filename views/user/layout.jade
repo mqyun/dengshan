@@ -38,8 +38,6 @@ html(lang='en')
                     li
                       a(href='javascript:;') 欢迎您，#{name}
                     - if (usertype == 'user')
-                      li.userUpdatePassword
-                        a(href='javascript:;') 修改密码
                       li
                         a(href='/myorder') 我的预定
                       li
@@ -87,7 +85,7 @@ html(lang='en')
                           .modal-content
                             .modal-body
                               a.close(href='#', data-dismiss='modal', aria-label='Close')
-                                span(aria-hidden='true') ×
+                                span.close-loginmodal(aria-hidden='true') ×
                               .kd-login-title
                                 h2 登录
                               .kd-login-sepratore
@@ -101,6 +99,7 @@ html(lang='en')
                                   input(type='password', name='password', placeholder='密码')
                                 p
                                   input.thbg-color.btn-login(type='button', value='登录')
+                                  a.userUpdatePassword(href='javascript:;') 忘记密码？
         .kd-headbar
           .container
             .row

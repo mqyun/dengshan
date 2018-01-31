@@ -92,6 +92,7 @@ $(document).on('click', '.btn-wcldingdan', function() {
 
 // 修改密码
 $(document).on('click', '.userUpdatePassword', function() {
+  $('.close-loginmodal').click();
   layer.open({
     type: 1,
     title: '修改密码',
@@ -99,20 +100,25 @@ $(document).on('click', '.userUpdatePassword', function() {
     skin: 'layui-layer-lan',
     content: '<div class="panel-body">\
     <div class="form col-md-12"><form class="form-horizontal tasi-form">\
-    <div class="form-group"><label class="control-label col-lg-2">原密码</label>\
-    <div class="col-lg-10"><input type="password" name="oldpassword" class="form-control"></div></div>\
+    <div class="form-group"><label class="control-label col-lg-2">账号</label>\
+    <div class="col-lg-10"><input type="text" name="xg-account" class="form-control"></div></div>\
+    <div class="form-group"><label class="control-label col-lg-2">手机号</label>\
+    <div class="col-lg-10"><input type="text" name="xg-phone" class="form-control"></div></div>\
     <div class="form-group"><label class="control-label col-lg-2">新密码</label>\
-    <div class="col-lg-10"><input type="password" name="password" class="form-control"></div></div></div></div>',
+    <div class="col-lg-10"><input type="text" name="xg-password" class="form-control"></div></div>\
+    </div></div>',
     btn: ['修改'],
     shadeClose: true,
     yes: function(index, layero) {
-      var oldpassword = $('input[name="oldpassword"]').val();
-      var password = $('input[name="password"]').val();
+      var account = $('input[name="xg-account"]').val();
+      var phone = $('input[name="xg-phone"]').val();
+      var password = $('input[name="xg-password"]').val();
       var data = {
-        'oldpassword': oldpassword,
+        'account': account,
+        'phone': phone,
         'password': password
       }
-      if (oldpassword.length == 0 || password.length == 0) {
+      if (account.length == 0 || phone.length == 0 || password.length == 0) {
         showTips('warning', 'Warning!', '请检查填写信息！');
       } else {
         ajaxPost('/updatePassword', data, function(result) {
